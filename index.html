@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Receipe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./utility/main.css">
+    <link rel="icon" type="image/png" href="./utility/ameo.png" />
+</head>
+
+<style>
+    #search_bar {
+        background-image: url('./utility/banner.png');
+    }
+</style>
+
+<body>
+
+    <div id="search_bar">
+        <div id="ingre"></div>
+        <div id="show_search">
+            <div><input type="text" placeholder="Search Your Receipe" id="input_value"></div>
+            <div id="show"></div>
+        </div>
+    </div>
+
+
+
+    <script type="module">
+        import navbar from "./component/navbar.js";
+        import { oninput } from "./scripts/searchbyname.js";
+        import { debounce } from "./scripts/debounce.js";
+
+        document.getElementById("input_value").oninput = () => {
+            debounce(oninput, 1000)
+        }
+
+
+
+        let new_div = document.createElement("div");
+
+        new_div.innerHTML = navbar();
+
+        document.body.prepend(new_div);
+
+    </script>
+
+
+</body>
+
+</html>
